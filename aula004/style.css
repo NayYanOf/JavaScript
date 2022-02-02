@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+body {
+    background-color: #0c0c0c;
+    font: normal 11pt Roboto;
+}
+
+h1 {
+    color: #f7ba15;
+}
+
+p{
+    color: white;
+}
