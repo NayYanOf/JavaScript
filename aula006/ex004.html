@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trabalhando strings</title>
+    <style>
+        body {
+            font: normal 12pt Roboto;
+        }
+    </style>
+</head>
+<body>
+
+    <script>
+        var nome = window.prompt('Qual é o seu nome?')
+        document.write(`Olá, <strong>${nome}</strong>! Seu nome tem ${nome.length} letras!<br />`)
+        document.write(`O seu nome em maiúsculo fica ${nome.toUpperCase()}.<br />`)
+        document.write(`O seu nome em minúsculo fica ${nome.toLowerCase()}.<br />`)
+        var salario = window.prompt('Quanto você recebe?')
+        /*
+        ESSES COMANDOS FUNCIONAM APENAS NO PROMPT DE COMANDO
+        
+        document.write(`Seu salário é: ${salario.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})}`)
+        document.write(`O seu salário é: ${salario.toFixed(2).replace('.',',')}`)
+        */
+    </script>
+</body>
+</html>
