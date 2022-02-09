@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operadores</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Os operadores em JavaScript</h1>
+    <h2>Operadores de Atribuição</h2>
+        <ul>
+            <li>var</li>
+            <li>let</li>
+            <li>const</li>
+        </ul>
+    <h2>Operadores Aritiméticos</h2>
+        <ul>
+            <li>+ (soma)</li>
+            <li>- (subtração)</li>
+            <li>* (multiplicação)</li>
+            <li>/ (divisão)</li>
+            <li>% (resto da divisão)</li>
+            <li>** (exponenciação)</li>
+        </ul>
+    <p>Ex:</p>
+    <pre>
+        var n1 = 7 + 5
+        var n2 = n1 - 8
+        var n3 = n2 * n1
+        var n4 = n3 % 2 
+        document.write(`O resúltado final é ${n4}`)
+    </pre>
+    <p>Executando:</p>
+    <script>
+        var n1 = 7 + 5
+        var n2 = n1 - 8
+        var n3 = n2 * n1
+        var n4 = n3 % 2
+        document.write(`O resultado final é ${n4}!`)
+    </script>
+
+    <h3>Auto-atribuição</h3>
+    <p>A auto-atribuição acontece quando a expressão vai abranger a variável que está sendo utilizada inicialmente.</p>
+    <p>Ex:</p>
+    <pre>
+        var aa1 = 5
+        var aa1 = aa1 + 5
+        var aa1 = aa1 * 3
+        var aa1 = aa1 / 2
+        document.write(`O valor final de aa1 é ${aa1}`)
+    </pre>
+    <script>
+        var aa1 = 5
+        var aa1 = aa1 + 5
+        var aa1 = aa1 * 3
+        var aa1 = aa1 / 2
+        document.write(`O valor final de aa1 é ${aa1}, pois: 5+5 é igual a 10, 10x3 é igual a 30 e 30/2 é igual a 15`)
+    </script>
+        <h4>Simplificando a auto-atribuição</h4>
+        <ul>
+            <li>aa1 += 5 (é a mesma coisa que aa1 = aa1 + 5)</li>
+            <li>aa1 *= 3 (é a mesma coisa que aa1 = aa1 * 3)</li>
+            <li>aa1++ (é a mesma coisa que aa1 = aa1 + 1, ou seja, representa a variável somada a 1, nesse caso o resultado final só é mostrado quando a variável é chamada)</li>
+            <li>aa1-- (é a mesma coisa que aa1 = aa1 - 1, ou seja, representa a variável subtraída a 1, nesse caso o resultado final só é mostrado quando a variável é chamada)</li>
+            <li>++aa1 (é a mesma coisa que aa1 = aa1 + 1, ou seja, representa a variável somada a 1, nesse caso o resultado final aparece assim que a variável é declarada)</li>
+            <li>--aa1 (é a mesma coisa que aa1 = aa1 - 1, ou seja, representa a variável subtraída a 1, nesse caso o resultado final aparece assim que a variável é declarada)</li>
+        </ul>
+        <p>Ex:</p>
+        <pre>
+            var aa2 = 10
+            aa2 += 5
+            aa2 -= 2
+            aa2 *= 3
+            document.write(`O valor final de aa1 é ${aa2}`)
+
+            var aa3 = 1
+            aa3++
+            aa3++
+            aa3++
+            aa3++
+            aa3--
+            document.write(`O valor final de aa3 é ${aa3}, pois: 1+1 é igual a 2, 2+1 é igual a 3, 3+1 é igual a 4. 4+1 é igual a 5 e 5-1 é igual a 4`)
+        </pre>
+        <p>Executando:</p>
+        <script>
+            var aa2 = 10
+            aa2 += 5
+            aa2 -= 2
+            aa2 *= 3
+            document.write(`O valor final de aa2 é ${aa2}, pois: 10+5 é igual a 15, 15-2 é igual a 13 e 13x3 é igual a 39 <br />`)
+
+            var aa3 = 1
+            aa3++
+            aa3++
+            aa3++
+            aa3++
+            aa3--
+            document.write(`O valor final de aa3 é ${aa3}, pois: 1+1 é igual a 2, 2+1 é igual a 3, 3+1 é igual a 4. 4+1 é igual a 5 e 5-1 é igual a 4`)
+        </script>
+
+    <h2>Operadores Relacionais</h2>
+        <ul>
+            <li>> (maior que)</li>
+            <li>< (menor que)</li>
+            <li>>= (maior ou igual)</li>
+            <li><= (menor ou igual)</li>
+            <li>== (igual)</li>
+            <li>!= (diferente)</li>
+        </ul>
+    <p>Ex:</p>
+    <pre>
+        var rel1 = 7 > 5
+        var rel2 = 20 < 10
+        var rel3 = rel1 == rel2
+        var rel4 = rel1 != rel2
+        var rel5 = 10 >= 15
+        var rel6 = rel1 != rel5
+        document.write(`7 é menor que 5, então é ${rel1}`)
+        document.write(`20 não é menor que 10, então é ${rel2}`)
+        document.write(`7 é maior que 5 e 20 não é menor que 10, então é ${rel3}`)
+        document.write(`7 é maior que 5 e 20 é maior que 10, então é ${rel4}`)
+        document.write(`10 não é maior ou igual a 15, então é ${rel5}`)
+        document.write(`7 é maior que 5 e 10 é menor que 15, então é ${rel6}`)
+    </pre>
+    <p>Executando:</p>
+    <script>
+        var rel1 = 7 > 5
+        var rel2 = 20 < 10
+        var rel3 = rel1 == rel2
+        var rel4 = rel1 != rel2
+        var rel5 = 10 >= 15
+        var rel6 = rel1 != rel5
+        document.write(`7 é maior que 5, então é ${rel1} <br />`)
+        document.write(`20 não é menor que 10, então é ${rel2} <br />`)
+        document.write(`7 é maior que 5 e 20 não é menor que 10, então é ${rel3} <br />`)
+        document.write(`7 é maior que 5 e 20 é maior que 10, então é ${rel4} <br />`)
+        document.write(`10 não é maior ou igual a 15, então é ${rel5} <br />`)
+        document.write(`7 é maior que 5 e 10 é menor que 15, então é ${rel6} <br />`)
+    </script>
+
+        <h3>Identidade</h3>
+        <p>Dentro dos relacionais podemos usar o conceito de identidade, por exemplo, se um inteiro 5 for relacionado sendo igual a uma string 5, o resultado é verdadeiro, pois a comparação se da em grandeza, ou seja, o valor em si. Já caso eu queria comparar a grandeza e o tipo de valor devo utilizar "===" (idêntico).</p>
+        <p>Ex:</p>
+        <pre>
+        var iden1 = 10 == 10
+        var iden2 = 10 == '10'
+        var iden3 = 10 === '10'
+        document.write(`A variável iden1 é ${iden1}, pois o inteuro 10 é igual ao inteiro 19.`)
+        document.write(`A variável iden2 é ${iden2}, pois o inteiro 10 é igual à string 10.`)
+        document.write(`Já a variável iden3 é ${iden3}, pois o inteiro 10 não é idêntico à string 10, ou seja, dois tipos diferentes.`)
+        document.write('O tipo do valor 10 é ' + typeof(10))
+        document.write('O tipo do valor ' + "'10' " + 'é ' + typeof('10'))
+        </pre>
+        <p>Executando:</p>
+        <script>
+            var iden1 = 10 == 10
+            var iden2 = 10 == '10'
+            var iden3 = 10 === '10'
+            document.write(`A variável iden1 é ${iden1}, pois o inteiro 10 é igual ao inteiro 10. <br />`)
+            document.write(`A variável iden2 é ${iden2}, pois o inteiro 10 é igual à string 10. <br />`)
+            document.write(`Já a variável iden3 é ${iden3}, pois o inteiro 10 não é idêntico à string 10, ou seja, dois tipos diferentes. <br />`)
+            document.write('O tipo do valor 10 é ' + typeof(10) + '<br />')
+            document.write('O tipo do valor ' + "'10' " + 'é ' + typeof('10'))
+        </script>
+
+    <h2>Operadores Lógicos</h2>
+    <ul>
+        <li>! (não {Negação})</li>
+        <li>&& (e {Conjunção})</li>
+        <li>|| (ou {Disjunção})</li>
+    </ul>
+    <p>Ex:</p>
+    <pre>
+        var logi1 = 10 + 5 == 15 && 11 + 2 != 13
+        var logi2 = 10 + 5 == 15 || 11 + 2 != 13
+        document.write(`Se 10+5 é igual a 15 e 11+2 não é diferente de 13, o resultado final é ${logi1}`)
+        document.write(`Se 10+5 é igual a 15 ou 11+2 não é diferente de 13, o resultado final é ${logi2}`)
+        document.write(`Se 10+5 é igual a 15 e 11+2 é igual a 13, o resultado final é ${logi3}`)
+        document.write(`Se 10+5 é diferente de 15 ou 11+2 é diferente de 13, o resultado final é ${logi4}`)
+    </pre>
+    <p>Executando:</p>
+    <script>
+        var logi1 = 10 + 5 == 15 && 11 + 2 != 13
+        var logi2 = 10 + 5 == 15 || 11 + 2 != 13
+        var logi3 = 10 + 5 == 15 && 11 + 2 == 13
+        var logi4 = 10 + 5 != 15 || 11 + 2 != 13
+        document.write(`Se 10+5 é igual a 15 e 11+2 é diferente de 13, o resultado final é ${logi1} <br />`)
+        document.write(`Se 10+5 é igual a 15 ou 11+2 é diferente de 13, o resultado final é ${logi2} <br />`)
+        document.write(`Se 10+5 é igual a 15 e 11+2 é igual a 13, o resultado final é ${logi3} <br />`)
+        document.write(`Se 10+5 é diferente de 15 ou 11+2 é diferente de 13, o resultado final é ${logi4}`)
+    </script>
+
+    <h2>Operador ternário</h2>
+    <ul>
+        <li>? (se)</li>
+        <li>: (do lado esquerdo o valor se verdadeiro e do direito se falso)</li>
+    </ul>
+    <p>Ex:</p>
+    <pre>
+        var ter1 = 'cavalo' == 'cavalo' ? 'SIM':'NÃO'
+        var ter2 = 'tigre' == 'cavalo' ? 'SIM':'NÃO'
+    </pre>
+    <p>Executando:</p>
+    <script>
+        var ter1 = 'cavalo' == 'cavalo' ? 'SIM':'NÃO'
+        var ter2 = 'tigre' == 'cavalo' ? 'SIM':'NÃO'
+        document.write(`Cavalo é igual a Cavalo? ${ter1} <br />`)
+        document.write(`Tigre é igual a Cavalo? ${ter2}`)
+    </script>
+
+    <h2>Precedência</h2>
+    <p>
+    A precedência é a ordem que o JavaScript leva em consideração na execução de uma expressão, sendo que cada tipo de operador possui sua regra, caso não haja regra para aquele tipo, ou mesmo existam mais de um mesmo tipo dentro de uma expressão, a ordem ocorre da esquerda para a direita. <br />
+    Caso queira fazer com que, por exemplo, em uma expressão a soma ocorra antes de uma multiplicação utilizar () "parênteses", pois o que estiver dentro será considerado o prioritário.
+    </p>
+    <ul>
+        <li>Aritiméticos:</li>
+            <ul>
+                <li>() "parênteses"</li>
+                <li>**</li>
+                <li>*, / e % (caso apareçam em uma mesma expressão é considerada a ordem da esquerda para a direita)</li>
+                <li>+ e -</li>
+            </ul>
+        <li>Relacionais (não possuem ordem, são lidos da esquerda para a direita)</li>
+        <li>Lógicos:</li>
+            <ul>
+                <li>!</li>
+                <li>&&</li>
+                <li>||</li>
+            </ul>
+        <li>Ternário (sempre será o último a ser lido, e não possui ordem, já que é pré-definida em sua sintaxe)</li>
+    </ul>
+</body>
+</html>
