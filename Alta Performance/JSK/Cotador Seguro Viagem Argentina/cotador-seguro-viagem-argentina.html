@@ -78,12 +78,12 @@
 
     // Função para puxar a API CPF/CNPJ
     function pegarDadosCPF() {
-        const cep = document.querySelector("#cep")
+        const cep = document.querySelector("#form-field-cep")
 
         const showData = (result)=>{
             for (const campo in result){
-                if (document.querySelector("#"+campo)){
-                    document.querySelector("#"+campo).value = result[campo]
+                if (document.querySelector("#form-field-"+campo)){
+                    document.querySelector("#form-field-"+campo).value = result[campo]
                 }
             }
         }
