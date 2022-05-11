@@ -1,0 +1,98 @@
+<script>
+    // Função para puxar API CPF/CNPJ e aplicar nos campos de viajante
+    /*function apiCpf(){
+            jQuery(document).ready(function($) {
+            var token = "589b919a78706e51e72c5f5e60c01046"
+            var urlBase = "https://api.cpfcnpj.com.br/";
+            $("#form-field-cpf_viajante1").blur(function() {
+                var cpf = $("#form-field-cpf_viajante").val().replace(/\D/g, '');
+                if (cpf != "") {
+                    var validacpf = /^[0-9]{11}$/;      
+                    if(validacpf.test(cpf)) {
+                        $("#form-field-nome_viajante1").val("...");
+                        $("#form-field-data_nasc").val("...");
+                        $.getJSON(urlBase + token +"/7/" + cpf , function(data) { 
+                            $( '#billing_persontype option[value=1]' ).attr( 'selected', 'selected' ).change();
+                            $("#form-field-nome_viajante1").val(data.nome);
+                            var nomeAPI = data.nome;
+                            var nomeCompleto = nomeAPI.split(" ");
+                            var primeiroNome = nomeCompleto[0];
+                            var sobrenomeArray = nomeCompleto.slice(1);
+                            var sobrenome = sobrenomeArray.join(" ");
+                            $("#form-field-nome_viajante1").val(data.nome);
+                            $("#billing_nome_viajante1").val(data.nome);
+                            $("#form-field-data_nasc").val(data.nascimento);
+                            $("#billing_nasc_viajante1").val(data.nascimento);
+                            $("#billing_first_name").val(primeiroNome);
+                            $("#billing_last_name").val(sobrenome);
+                            $("#billing_cpf").val(cpf);
+                            
+                            $("#billing_cpf_viajante1").val(cpf);
+                        });
+                    };
+                }
+            });
+        });
+    }
+
+    // Função para puxar API CEP e aplicar nos campos de viajante
+    function apiCep(){
+        var estado;
+        jQuery(document).ready(function($) {
+            $( '#billing_state option:selected' ).attr( 'selected', false ).change();
+            var urlBase = "https://viacep.com.br/ws/";
+            $("#form-field-cep_viajante").blur(function() {
+                var cep = $("#form-field-cep_viajante1").val().replace(/\D/g, '');
+                if (cep != "") {
+                    var validacep = /^[0-9]{8}$/;      
+                    if(validacep.test(cep)) {
+                        $("#form-field-endereco").val("...");
+                        $("#form-field-end_cidade").val("...");
+                        $("#form-field-end_bairro").val("...");
+                        $("#form-field-end_estado").val("...");
+                        $("#billing_postcode").val(cep);
+                        $("#billing_cep_imovel").val(cep);
+                        $.getJSON(urlBase + cep +"/json/?callback=?" , function(data) {            
+                            $("#form-field-endereco").val(data.logradouro);
+                            $("#billing_address_1").val(data.logradouro);
+                            $("#billing_endereco_imovel").val(data.logradouro);
+                            $("#form-field-end_bairro").val(data.bairro);
+                            $("#billing_neighborhood").val(data.bairro);
+                            $("#billing_bairro_imovel").val(data.bairro);
+                            $("#form-field-end_cidade").val(data.localidade);
+                            $("#billing_city").val(data.localidade);
+                            $("#billing_cidade_imovel").val(data.localidade);
+                            $("#form-field-end_estado").val(data.uf);
+                            $("#billing_estado_imovel").val(data.uf);
+                            estado = data.uf;
+                            document.getElementById('billing_state').value = estado;
+                            $( '#billing_state option[value='+ data.uf +']' ).attr( 'selected', 'selected' ).change();
+                            console.log(data.uf);
+                            $( '#billing_state' ).trigger( 'liszt:updated' ).trigger( 'chosen:updated' );
+                        });
+                    };
+                }
+            });
+        });
+    }*/
+
+    // Função para puxar a API CPF/CNPJ
+    function pegarDadosCPF() {
+        
+    }
+
+    // Função para calculo da tarifa final
+    function calculaTarifaFinal(){
+    var diasViagem = 30
+    var cotacaoDolar = 4.5
+    var valorPlanoDia = 2.9
+    var qtdViajantes0 = 3
+    var qtdViajantes65 = 0
+    var valorFinal
+    var valorFinalArr
+
+    valorFinal = diasViagem*(cotacaoDolar*valorPlanoDia)*(qtdViajantes0*1 + qtdViajantes65*2)
+    valorFinalArr = valorFinal.toFixed(2)
+    console.log(valorFinalArr)
+    }
+</script>
