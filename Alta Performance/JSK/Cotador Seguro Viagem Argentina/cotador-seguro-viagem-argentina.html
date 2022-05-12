@@ -92,6 +92,14 @@
     }
 
     // Função para calculo da tarifa final
+    var btnCotar
+    window.setTimeout(function(){
+    btnCotar = document.querySelector("#btn-cotar")
+    btnCotar.addEventListener("click", function(e){
+        e.preventDefault
+        calculaValorFinal()
+    })
+
     function calculaValorFinal(){
     var diasViagem = document.getElementById("form-field-diasVigem").value
     var cotacaoDolar = document.getElementById("form-field-valor_dolar").value
@@ -127,6 +135,7 @@
     valorFinalReal = valorFinal.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})
     document.getElementById("valorfinal").innerHTML = valorFinalReal
 }
+},2000)
 </script>
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
