@@ -177,25 +177,6 @@ var btnVoltar
     }
 },2000)
 </script>
+    
 
-///////////////////////////////////////////////////////////////////////////////////////////////
-    <script>
-    function datepicker_draw_nb_nights(){
-        var $datepicker = jQuery("#ui-datepicker-div");
-        setTimeout(function(){
-            if(start_date != null && end_date != null){
-                //var $qty_days_stay = jQuery("<div />", { class: "ui-datepicker-stay-duration" });
-                qty_nights_stay = get_days_difference(timestamp_start_date, timestamp_end_date);
-                //$qty_days_stay.text(qty_nights_stay + " Noites");
-                //$qty_days_stay.appendTo($datepicker);
-                $("#form-field-diasVigem").val(qty_nights_stay);
-            }
-        });
-    } 
-        
-    function get_days_difference(start_date, end_date){
-        return Math.floor(end_date - start_date) / (1000*60*60*24);
-    }
-    </script>
-    
-    
+home_url().'/cadastro-cotador/?dp='.$preOutput[$x]['qtd_dependentes'].'&pl='.$preOutput[$x]['ID'].'&pl_nm='.$preOutput[$x]['post_title'].'&op='.$preOutput[$x]['operadora'].'&prc='.$preOutput[$x]['preco'].'"target="_blank">
