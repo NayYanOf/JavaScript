@@ -105,6 +105,9 @@
     function calculaValorFinal(){
     var diasViagem = document.getElementById("form-field-diasVigem").value
     var cotacaoDolar = document.getElementById("form-field-valor_dolar").value
+    var destino = document.getElementById("form-field-destino").value
+    var dataIda = document.getElementById("form-field-dataIda").value
+    var dataVolta = document.getElementById("form-field-dataVolta").value
     var valorPlanoDia0 = document.getElementById("form-field-plano-0").checked
     var valorPlanoDia1 = document.getElementById("form-field-plano-1").checked
     
@@ -176,7 +179,18 @@ var btnVoltar
         document.getElementById("etapa2").style.display = "none"
     }
 },2000)
+
+// Montagem da URL com os GETs para o formulário
+var planoEscolhidoLabel
+    if (valorPlanoDia0 == true) {
+        planoEscolhidoLabel = document.querySelector("label[for=form-field-plano-0]")
+    } else if (valorPlanoDia1 == true) {
+        planoEscolhidoLabel = document.querySelector("label[for=form-field-plano-1]")
+    } else {}
+
+    var nomePLano = planoEscolhidoLabel.innerHTML
+    var homeURL = '<?php echo home_url();?>'
+
+    var urlEnvio = homeURL+'/formulario-seguro-viagem-argentina/?dstn='+destino+'&ida='+dataIda+'&vlt='+dataVolta+'&pln='+nomePLano+'&diasvj='+diasViagem+'target="_blank">'
 </script>
     
-
-home_url().'/cadastro-cotador/?dp='.$preOutput[$x]['qtd_dependentes'].'&pl='.$preOutput[$x]['ID'].'&pl_nm='.$preOutput[$x]['post_title'].'&op='.$preOutput[$x]['operadora'].'&prc='.$preOutput[$x]['preco'].'"target="_blank">
