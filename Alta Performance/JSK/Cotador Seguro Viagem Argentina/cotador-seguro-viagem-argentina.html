@@ -94,10 +94,12 @@
     // Função para calculo da tarifa final
     var btnCotar
     window.setTimeout(function(){
+    document.getElementById("btn-assinar").style.display = "none"
     btnCotar = document.querySelector("#btn-cotar")
     btnCotar.addEventListener("click", function(e){
         e.preventDefault
         calculaValorFinal()
+        mostrarBotaoAssinar()
     })
 
     function calculaValorFinal(){
@@ -134,7 +136,45 @@
     valorFinal = diasViagem*(cotacaoDolar*planoComPonto)*(viajantesMenor65 + viajantesMaior65*2)
     valorFinalReal = valorFinal.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})
     document.getElementById("valorfinal").innerHTML = valorFinalReal
-}
+    }
+
+    function mostrarBotaoAssinar () {
+        document.getElementById("btn-assinar").style.display = "block"
+    }
+},2000)
+
+// Botão próxima etapa do cotador
+var btnPlano
+    window.setTimeout(function(){
+    btnPlano = document.querySelector("#btn-plano")
+    btnPlano.addEventListener("click", function(e){
+        e.preventDefault
+        escolherPlano()
+    })
+
+    document.getElementById("etapa1").style.display = "block"
+    document.getElementById("etapa2").style.display = "none"
+
+    function escolherPlano() {
+        document.getElementById("etapa1").style.display = "none"
+        document.getElementById("etapa2").style.display = "block"
+    }
+},2000)
+
+// Botão voltar
+
+var btnVoltar
+    window.setTimeout(function(){
+    btnVoltar = document.querySelector("#btn-voltar")
+    btnVoltar.addEventListener("click", function(e){
+        e.preventDefault
+        escolherPlano()
+    })
+
+    function escolherPlano() {
+        document.getElementById("etapa1").style.display = "block"
+        document.getElementById("etapa2").style.display = "none"
+    }
 },2000)
 </script>
 
