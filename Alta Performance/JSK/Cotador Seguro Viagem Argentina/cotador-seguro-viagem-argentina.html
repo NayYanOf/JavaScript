@@ -1,6 +1,6 @@
 <script>
     // Função para puxar API CPF/CNPJ e aplicar nos campos de viajante
-    /*function apiCpf(){
+    function apiCpf(){
             jQuery(document).ready(function($) {
             var token = "589b919a78706e51e72c5f5e60c01046"
             var urlBase = "https://api.cpfcnpj.com.br/";
@@ -74,47 +74,73 @@
                 }
             });
         });
-    }*/
+    }
 
-    // Função para puxar a API CPF/CNPJ
-    function pegarDadosCPF() {
-        const cep = document.querySelector("#form-field-cep")
-
-        const showData = (result)=>{
-            for (const campo in result){
-                if (document.querySelector("#form-field-"+campo)){
-                    document.querySelector("#form-field-"+campo).value = result[campo]
-                }
-            }
-        }
-
-        cep.addEventListener("blur", (e)=>{
-            let search = cep.value.replace("-", "")
-            const options = {
-                method: 'GET',
-                mode: 'cors',
-                cache: 'default'
-            }
-            fetch(`https://viacep.com.br/ws/${search}/json/`, options)
-            .then(response =>{response.json()
-                .then( data => showData(data))
-            })
-            .catch(e => console.log("Erro na API: " + e.message))
-        })
+    // Função para puxar API Cotador Dólar
+    function apiDolar() {
+        var urlBase = "https://economia.awesomeapi.com.br/last";
+        var moedas = "USD-BRL";
+        jQuery(document).ready(function($) {
+            $.getJSON( urlBase + "/" + moedas , function(data) {
+                    var valorDolar = data["USDBRL"]["ask"];
+                    $("#form-field-valor_dolar").val(valorDolar);
+                    var dolarTradado = valorDolar.substring(0, valorDolar.length - 2);
+                    var dolarVirgula = dolarTradado.replace(/[.]/g, ',');
+                    $("#form-field-valor_dolar_virgula").val(dolarVirgula);
+                });
+            });
     }
 
     // Função para calculo da tarifa final
     function calculaTarifaFinal(){
-    var diasViagem = 30
-    var cotacaoDolar = 4.5
-    var valorPlanoDia = 2.9
-    var qtdViajantes0 = 3
-    var qtdViajantes65 = 0
+
+    var diasViagem = document.querySelector("#form-field-diasVigem").value
+    var cotacaoDolar = document.querySelector("#form-field-valor_dolar").value
+    var valorPlanoDia0 = document.querySelector("#form-field-plano-0").checked
+    var valorPlanoDia1 = document.querySelector("#form-field-plano-1").checked
+    
+    const menor65 = []
+    const maior65 = []
+    var idades = document.querySelectorAll("#form-field-idadeViaj1, #form-field-idadeViaj2, #form-field-idadeViaj3, #form-field-idadeViaj4, #form-field-idadeViaj5, #form-field-idadeViaj6")
+    var i = 0
+    for (i; i < idades.length; i++) {
+            if (i > 65) {
+                maior65.push("+65")
+            } else {
+                menor65.push("-65")
+            }
+        }
+
     var valorFinal
     var valorFinalArr
 
-    valorFinal = diasViagem*(cotacaoDolar*valorPlanoDia)*(qtdViajantes0*1 + qtdViajantes65*2)
+    var planoEscolhido = (valorPlanoDia0 == true) ? document.querySelector("#form-field-plano-0").value:document.querySelector("#form-field-plano-1").value
+
+
+    valorFinal = diasViagem*(cotacaoDolar*planoEscolhido)*(qtdViajantes0 + qtdViajantes65*2)
     valorFinalArr = valorFinal.toFixed(2)
-    console.log(valorFinalArr)
+    document.querySelector("#valorfinal").innerHTML = "R$ "+"Teste"
     }
 </script>
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+    <script>
+    function datepicker_draw_nb_nights(){
+        var $datepicker = jQuery("#ui-datepicker-div");
+        setTimeout(function(){
+            if(start_date != null && end_date != null){
+                //var $qty_days_stay = jQuery("<div />", { class: "ui-datepicker-stay-duration" });
+                qty_nights_stay = get_days_difference(timestamp_start_date, timestamp_end_date);
+                //$qty_days_stay.text(qty_nights_stay + " Noites");
+                //$qty_days_stay.appendTo($datepicker);
+                $("#form-field-diasVigem").val(qty_nights_stay);
+            }
+        });
+    } 
+        
+    function get_days_difference(start_date, end_date){
+        return Math.floor(end_date - start_date) / (1000*60*60*24);
+    }
+    </script>
+    
+    
