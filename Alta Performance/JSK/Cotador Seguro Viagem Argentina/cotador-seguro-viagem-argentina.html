@@ -92,35 +92,41 @@
     }
 
     // Função para calculo da tarifa final
-    function calculaTarifaFinal(){
-
-    var diasViagem = document.querySelector("#form-field-diasVigem").value
-    var cotacaoDolar = document.querySelector("#form-field-valor_dolar").value
-    var valorPlanoDia0 = document.querySelector("#form-field-plano-0").checked
-    var valorPlanoDia1 = document.querySelector("#form-field-plano-1").checked
+    function calculaValorFinal(){
+    var diasViagem = document.getElementById("form-field-diasVigem").value
+    var cotacaoDolar = document.getElementById("form-field-valor_dolar").value
+    var valorPlanoDia0 = document.getElementById("form-field-plano-0").checked
+    var valorPlanoDia1 = document.getElementById("form-field-plano-1").checked
     
     const menor65 = []
     const maior65 = []
     var idades = document.querySelectorAll("#form-field-idadeViaj1, #form-field-idadeViaj2, #form-field-idadeViaj3, #form-field-idadeViaj4, #form-field-idadeViaj5, #form-field-idadeViaj6")
-    var i = 0
-    for (i; i < idades.length; i++) {
-            if (i > 65) {
-                maior65.push("+65")
-            } else {
-                menor65.push("-65")
-            }
+    
+    for (var i = 0; i < idades.length; i++) {
+            if (idades[i].value > 65) {
+                maior65.push(idades[i].value)            
+            } else if (idades[i].value > 0) {
+                menor65.push(idades[i].value)
+            } else {}
         }
 
+    var viajantesMenor65 = menor65.length
+    var viajantesMaior65 = maior65.length
+
     var valorFinal
-    var valorFinalArr
 
-    var planoEscolhido = (valorPlanoDia0 == true) ? document.querySelector("#form-field-plano-0").value:document.querySelector("#form-field-plano-1").value
+    var planoEscolhido
+    if (valorPlanoDia0 == true) {
+        planoEscolhido = document.getElementById("form-field-plano-0").value
+    } else if (valorPlanoDia1 == true) {
+        planoEscolhido = document.getElementById("form-field-plano-1").value
+    } else {}
+    var planoComPonto = planoEscolhido.replace(",", ".")
 
-
-    valorFinal = diasViagem*(cotacaoDolar*planoEscolhido)*(qtdViajantes0 + qtdViajantes65*2)
-    valorFinalArr = valorFinal.toFixed(2)
-    document.querySelector("#valorfinal").innerHTML = "R$ "+"Teste"
-    }
+    valorFinal = diasViagem*(cotacaoDolar*planoComPonto)*(viajantesMenor65 + viajantesMaior65*2)
+    valorFinalReal = valorFinal.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})
+    document.getElementById("valorfinal").innerHTML = valorFinalReal
+}
 </script>
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
