@@ -181,16 +181,40 @@ var btnVoltar
 },2000)
 
 // Montagem da URL com os GETs para o formulário
-var planoEscolhidoLabel
+    var planoEscolhidoLabel
     if (valorPlanoDia0 == true) {
         planoEscolhidoLabel = document.querySelector("label[for=form-field-plano-0]")
     } else if (valorPlanoDia1 == true) {
         planoEscolhidoLabel = document.querySelector("label[for=form-field-plano-1]")
     } else {}
 
+    var idade1 = document.getElementById("form-field-idadeViaj1")
+    var idade2 = document.getElementById("form-field-idadeViaj2")
+    var idade3 = document.getElementById("form-field-idadeViaj3")
+    var idade4 = document.getElementById("form-field-idadeViaj4")
+    var idade5 = document.getElementById("form-field-idadeViaj5")
+    var idade6 = document.getElementById("form-field-idadeViaj6")
     var nomePLano = planoEscolhidoLabel.innerHTML
     var homeURL = '<?php echo home_url();?>'
 
-    var urlEnvio = homeURL+'/formulario-seguro-viagem-argentina/?dstn='+destino+'&ida='+dataIda+'&vlt='+dataVolta+'&pln='+nomePLano+'&diasvj='+diasViagem+'target="_blank">'
+    var urlEnvio = homeURL+'/formulario-seguro-viagem-argentina/?dstn='+destino+'&ida='+dataIda+'&vlt='+dataVolta+'&pln='+nomePLano+'&diasvj='+diasViagem+'&idad1='+idade1+'&idad2='+idade2+'&idad3='+idade3+'&idad4='+idade4+'&idad5='+idade5+'idad6='+idade6+'target="_blank">'
+
+// Calcula idade com data de nascimento
+var d = new Date,
+        ano_atual = d.getFullYear(),
+        mes_atual = d.getMonth() + 1,
+        dia_atual = d.getDate(),
+
+        ano_aniversario = 2001,
+        mes_aniversario = 07,
+        dia_aniversario = 09,
+
+        quantos_anos = ano_atual - ano_aniversario;
+
+    if (mes_atual < mes_aniversario || mes_atual == mes_aniversario && dia_atual < dia_aniversario) {
+        quantos_anos--;
+    }
+    document.getElementById("form-field-data_nasc").value.split("/")
+    document.getElementById("form-field-idade1").value = quantos_anos
 </script>
     
