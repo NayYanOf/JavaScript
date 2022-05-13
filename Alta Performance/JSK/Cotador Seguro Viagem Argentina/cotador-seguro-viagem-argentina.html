@@ -200,6 +200,15 @@ var btnVoltar
     var urlEnvio = homeURL+'/formulario-seguro-viagem-argentina/?dstn='+destino+'&ida='+dataIda+'&vlt='+dataVolta+'&pln='+nomePLano+'&diasvj='+diasViagem+'&idad1='+idade1+'&idad2='+idade2+'&idad3='+idade3+'&idad4='+idade4+'&idad5='+idade5+'idad6='+idade6+'target="_blank">'
 
 // Calcula idade com data de nascimento
+var anyCampoNasc
+    window.setTimeout(function(){
+    anyCampoNasc = document.querySelector('[id^="form-field-data_nasc"]')
+    anyCampoNasc.addEventListener("blur", function(e){
+        e.preventDefault
+        calculaIdadaPorNascimento()
+    })
+
+function calculaIdadaPorNascimento() {
 var camposNasc = document.querySelectorAll('[id^="form-field-data_nasc"]')
 var camposIdade = document.querySelectorAll('[id^="form-field-idade"]')
 for (var n = 0; n < camposNasc.length; n++) {
@@ -222,5 +231,42 @@ for (var n = 0; n < camposNasc.length; n++) {
         }
         camposIdade[n].value = quantos_anos
     }
+}
+},2000)
+
+// Calcula idade com data de nascimento V2
+var anyCampoNasc
+    window.setTimeout(function(){
+    for (var n = 0; n < camposNasc.length; n++){
+    anyCampoNasc = document.querySelector('[id^="form-field-data_nasc"]')
+    anyCampoNasc.addEventListener("blur", function(e){
+        e.preventDefault
+        calculaIdadaPorNascimento()
+    })
+}
+
+function calculaIdadaPorNascimento() {
+var camposNasc = document.querySelectorAll('[id^="form-field-data_nasc"]')
+var camposIdade = document.querySelectorAll('[id^="form-field-idade"]')
+    var valorNasc = camposNasc[n].value.split("/")
+    var d = new Date,
+            ano_atual = d.getFullYear(),
+            mes_atual = d.getMonth() + 1,
+            dia_atual = d.getDate(),
+
+            ano_aniversario = valorNasc[2],
+            mes_aniversario = valorNasc[1],
+            dia_aniversario = valorNasc[0],
+
+            quantos_anos = ano_atual - ano_aniversario;
+
+        if (mes_atual < mes_aniversario || mes_atual == mes_aniversario) {
+            if (dia_atual < dia_aniversario) {
+                quantos_anos--;
+            }
+        }
+        camposIdade[n].value = quantos_anos
+}
+},2000)
 </script>
     
