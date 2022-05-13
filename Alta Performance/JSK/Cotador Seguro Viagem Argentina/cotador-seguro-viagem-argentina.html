@@ -200,13 +200,13 @@ var btnVoltar
     var urlEnvio = homeURL+'/formulario-seguro-viagem-argentina/?dstn='+destino+'&ida='+dataIda+'&vlt='+dataVolta+'&pln='+nomePLano+'&diasvj='+diasViagem+'&idad1='+idade1+'&idad2='+idade2+'&idad3='+idade3+'&idad4='+idade4+'&idad5='+idade5+'idad6='+idade6+'target="_blank">'
 
 // Calcula idade com data de nascimento
-var valorNasc = document.getElementById("form-field-data_nasc").value
-var campoNascI = document.getElementById("form-field-data_nasc").id.substr(20,1)
-for (var campoNasc in campoNascI) {
-    console.log('campoNasc.'+campoNascI+' = '+campoNasc[campoNascI])
+var camposNasc = document.querySelectorAll('[id^="form-field-data_nasc"]')
+for (var n = 0; n < camposNasc.length; n++) {
+    var valorNasc = camposNasc[n].value
 }
-if (campoNasc > 0) {
-function calculaIdade() {
+
+var camposIdade = document.querySelectorAll('[id^="form-field-idade"]')
+for (var j = 0; j < camposIdade.length; j++){
     var dataNasc = valorNasc.split("/")
     var d = new Date,
             ano_atual = d.getFullYear(),
@@ -222,8 +222,7 @@ function calculaIdade() {
         if (mes_atual < mes_aniversario || mes_atual == mes_aniversario && dia_atual < dia_aniversario) {
             quantos_anos--;
         }
-        document.getElementById("form-field-idade1").value = quantos_anos
-    }
-} else {}
+        document.querySelectorAll('[id^="form-field-idade"]')[j].value = quantos_anos
+}
 </script>
     
