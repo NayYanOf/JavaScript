@@ -108,6 +108,7 @@ var btnVoltar
     var urlEnvio = homeURL+'/formulario-seguro-viagem-argentina/?dstn='+destino+'&ida='+dataIda+'&vlt='+dataVolta+'&pln='+nomePLano+'&diasvj='+diasViagem+'&idad2='+idade2+'&idad3='+idade3+'&idad4='+idade4+'&idad5='+idade5+'idad6='+idade6+'&prec='+preco+'target="_blank">'
 
 // Calcula idade com data de nascimento
+var blabla
 var anyCampoNasc
 var evt
     window.setTimeout(function(){
@@ -161,10 +162,11 @@ function apiCPF (idCampo) {
             }
             fetch(urlBase + token +"/7/" + cpf , options)
             .then(
+            blabla = response,
+            console.log(blabla),
             response =>{response.json()
                 .then(
                     data=> function(data) { 
-                console.log(data)
                 document.querySelector("#form-field-nome"+idCampo).value = data.nome;
                 var nomeAPI = data.nome;
                 var nomeCompleto = nomeAPI.split(" ");
