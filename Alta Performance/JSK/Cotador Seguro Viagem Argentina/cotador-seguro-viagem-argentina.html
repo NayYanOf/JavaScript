@@ -1,4 +1,5 @@
 <script>
+     // PÁGINA DO COTADOR
      // Função para calculo da tarifa final
     var btnCotar
     window.setTimeout(function(){
@@ -53,6 +54,37 @@
     function mostrarBotaoAssinar () {
         document.getElementById("btn-assinar").style.display = "block"
     }
+
+    function linkEnvio (){
+    var btnAssinar = document.querySelector("#btn-assinar a")  
+    var valorPlanoDia0 = document.getElementById("form-field-plano-0").checked
+    var valorPlanoDia1 = document.getElementById("form-field-plano-1").checked
+    var planoEscolhidoLabel
+    if (valorPlanoDia0 == true) {
+        planoEscolhidoLabel = document.querySelector("label[for=form-field-plano-0]")
+    } else if (valorPlanoDia1 == true) {
+        planoEscolhidoLabel = document.querySelector("label[for=form-field-plano-1]")
+    } else {}
+
+    var destino = document.getElementById("form-field-destino").value
+    var dataIda = document.getElementById("form-field-dataIda").value
+    var dataVolta = document.getElementById("form-field-dataVolta").value
+    var diasViagem = document.getElementById("form-field-diasVigem").value
+
+    var idade2 = document.getElementById("form-field-idadeViaj2").value
+    var idade3 = document.getElementById("form-field-idadeViaj3").value
+    var idade4 = document.getElementById("form-field-idadeViaj4").value
+    var idade5 = document.getElementById("form-field-idadeViaj5").value
+    var idade6 = document.getElementById("form-field-idadeViaj6").value
+    var preco = document.getElementById("valorfinal").innerHTML
+    new Intl.NumberFormat
+    var precoNum = preco.NumberFormat
+    var nomePLano = planoEscolhidoLabel.innerHTML
+
+    var urlEnvio = 'https://starcorretoradeseguros.com.br/dev-cotador-seguro-viagem-argentina-formulario/?dstn='+destino+'&ida='+dataIda+'&vlt='+dataVolta+'&pln='+nomePLano+'&diasvj='+diasViagem+'&idad2='+idade2+'&idad3='+idade3+'&idad4='+idade4+'&idad5='+idade5+'idad6='+idade6+'&prec='+precoNum
+
+    btnAssinar.href = urlEnvio
+    }
 },2000)
 
 // Botão próxima etapa do cotador
@@ -89,30 +121,7 @@ var btnVoltar
     }
 },2000)
 
-// Montagem da URL com os GETs para o formulário
-    function linkEnvio (){
-    var planoEscolhidoLabel
-    if (valorPlanoDia0 == true) {
-        planoEscolhidoLabel = document.querySelector("label[for=form-field-plano-0]")
-    } else if (valorPlanoDia1 == true) {
-        planoEscolhidoLabel = document.querySelector("label[for=form-field-plano-1]")
-    } else {}
-
-    var idade1 = document.getElementById("form-field-idadeViaj1")
-    var idade2 = document.getElementById("form-field-idadeViaj2")
-    var idade3 = document.getElementById("form-field-idadeViaj3")
-    var idade4 = document.getElementById("form-field-idadeViaj4")
-    var idade5 = document.getElementById("form-field-idadeViaj5")
-    var idade6 = document.getElementById("form-field-idadeViaj6")
-    var nomePLano = planoEscolhidoLabel.innerHTML
-    var homeURL = '<?php echo home_url();?>'
-
-    var urlEnvio = homeURL+'/formulario-seguro-viagem-argentina/?dstn='+destino+'&ida='+dataIda+'&vlt='+dataVolta+'&pln='+nomePLano+'&diasvj='+diasViagem+'&idad2='+idade2+'&idad3='+idade3+'&idad4='+idade4+'&idad5='+idade5+'idad6='+idade6+'&prec='+preco+'target="_blank">'
-
-    var btnAssinar = document.querySelector("#btn-assinar a")
-    btnAssinar.href = urlEnvio
-}
-
+// PÁGINA DO FORMULÁRIO
 // Calcula idade com data de nascimento
 var resposta
 var anyCampoNasc
