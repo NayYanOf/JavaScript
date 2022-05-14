@@ -8,6 +8,7 @@
         e.preventDefault
         calculaValorFinal()
         mostrarBotaoAssinar()
+        linkEnvio()
     })
 
     function calculaValorFinal(){
@@ -89,6 +90,7 @@ var btnVoltar
 },2000)
 
 // Montagem da URL com os GETs para o formulário
+    function linkEnvio (){
     var planoEscolhidoLabel
     if (valorPlanoDia0 == true) {
         planoEscolhidoLabel = document.querySelector("label[for=form-field-plano-0]")
@@ -106,6 +108,10 @@ var btnVoltar
     var homeURL = '<?php echo home_url();?>'
 
     var urlEnvio = homeURL+'/formulario-seguro-viagem-argentina/?dstn='+destino+'&ida='+dataIda+'&vlt='+dataVolta+'&pln='+nomePLano+'&diasvj='+diasViagem+'&idad2='+idade2+'&idad3='+idade3+'&idad4='+idade4+'&idad5='+idade5+'idad6='+idade6+'&prec='+preco+'target="_blank">'
+
+    var btnAssinar = document.querySelector("#btn-assinar a")
+    btnAssinar.href = urlEnvio
+}
 
 // Calcula idade com data de nascimento
 var resposta
