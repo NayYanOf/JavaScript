@@ -108,118 +108,93 @@ var btnVoltar
     var urlEnvio = homeURL+'/formulario-seguro-viagem-argentina/?dstn='+destino+'&ida='+dataIda+'&vlt='+dataVolta+'&pln='+nomePLano+'&diasvj='+diasViagem+'&idad2='+idade2+'&idad3='+idade3+'&idad4='+idade4+'&idad5='+idade5+'idad6='+idade6+'&prec='+preco+'target="_blank">'
 
 // Calcula idade com data de nascimento
-var blabla
+var resposta
 var anyCampoNasc
 var evt
-    window.setTimeout(function(){
+jQuery(document).ready(function($) {
+window.setTimeout(function(){
     anyCampoNasc = document.querySelectorAll('[id^="form-field-cpf"]')
     for (var n = 0; n < anyCampoNasc.length; n++){
-    anyCampoNasc[n].addEventListener("blur", function(e){
-        evt = e.target
-        console.log(evt)
-        var numCampo = evt.getAttribute('id').substr(-1)
-        console.log(numCampo)
-        apiCPF(numCampo)
-    })
-}
-function calculaIdadaPorNascimento(idViajante) {
-var camposNasc = document.querySelector('#form-field-data_nasc'+idViajante)
-var camposIdade = document.querySelector('#form-field-idade'+idViajante)
-    var valorNasc = camposNasc.value.split("/")
-    var d = new Date,
-            ano_atual = d.getFullYear(),
-            mes_atual = d.getMonth() + 1,
-            dia_atual = d.getDate(),
+        console.log(anyCampoNasc[n])
+        let i = n+1
+        $('#form-field-cpf'+i).mask("999.999.999-99");
+        anyCampoNasc[n].addEventListener("blur", function(e){
+            evt = e.target
+            console.log(evt)
+            var numCampo = evt.getAttribute('id').substr(-1)
+            console.log(numCampo)
+            apiCPF(numCampo)
+        })
+    }
 
-            ano_aniversario = valorNasc[2],
-            mes_aniversario = valorNasc[1],
-            dia_aniversario = valorNasc[0],
+    async function calculaIdadePorNascimento(idViajante, dataNasc) {
+        console.log(idViajante);
+        var camposIdade = document.querySelector('#form-field-idade'+idViajante)
+        var valorNasc = dataNasc.split("/")
+        console.log(valorNasc);
+        var d = new Date,
+        ano_atual = d.getFullYear(),
+        mes_atual = d.getMonth() + 1,
+        dia_atual = d.getDate(),
 
-            quantos_anos = ano_atual - ano_aniversario;
+        ano_aniversario = valorNasc[2],
+        mes_aniversario = valorNasc[1],
+        dia_aniversario = valorNasc[0],
 
-        if (mes_atual < mes_aniversario || mes_atual == mes_aniversario) {
-            if (dia_atual < dia_aniversario) {
-                quantos_anos--;
-            }
+        quantos_anos = ano_atual - ano_aniversario;
+
+        if (mes_atual < mes_aniversario || mes_atual == mes_aniversario && dia_atual < dia_aniversario) {
+            quantos_anos--;
         }
         camposIdade.value = quantos_anos
-}
-
-// Api CPF
-function apiCPF (idCampo) {
-    var token = "589b919a78706e51e72c5f5e60c01046"
-    var urlBase = "https://api.cpfcnpj.com.br/";
-    var cpf = document.querySelector("#form-field-cpf"+idCampo).value.replace(/\D/g, '');
-    if (cpf != "") {
-        var validacpf = /^[0-9]{11}$/;      
-        if(validacpf.test(cpf)) {
-            document.querySelector("#form-field-nome"+idCampo).value = "...";
-            document.querySelector("#form-field-data_nasc"+idCampo).value = "...";
-            var options = {
-                method: 'GET',
-                mode: 'cors',
-                cache: 'default'
-            }
-            fetch(urlBase + token +"/7/" + cpf , options)
-            .then(
-            blabla = response,
-            console.log(blabla),
-            response =>{response.json()
-                .then(
-                    data=> function(data) { 
-                document.querySelector("#form-field-nome"+idCampo).value = data.nome;
-                var nomeAPI = data.nome;
-                var nomeCompleto = nomeAPI.split(" ");
-                var primeiroNome = nomeCompleto[0];
-                var sobrenomeArray = nomeCompleto.slice(1);
-                var sobrenome = sobrenomeArray.join(" ");
-                document.querySelector("#form-field-nome"+idCampo).value = data.nome;
-                document.querySelector("#billing_nome"+idCampo).value = data.nome;
-                document.querySelector("#form-field-data_nasc"+idCampo).value = data.nascimento;
-                document.querySelector("#billing_nasc"+idCampo).value = data.nascimento;
-                document.querySelector("#billing_first_name"+idCampo).value = primeiroNome;
-                document.querySelector("#billing_last_name"+idCampo).value = sobrenome;
-                document.querySelector("#billing_cpf"+idCampo).value = cpf;
-            },
-            calculaIdadaPorNascimento(idCampo)
-                )
-        });
-        };
     }
-}
+
+    // Api CPF
+  async  function apiCPF (idCampo) {
+        var token = "589b919a78706e51e72c5f5e60c01046"
+        var urlBase = "https://api.cpfcnpj.com.br/";
+        var cpf = document.querySelector("#form-field-cpf"+idCampo).value.replace(/\D/g, '');
+        if (cpf != "") {
+            var validacpf = /^[0-9]{11}$/;      
+            if(validacpf.test(cpf)) {
+                document.querySelector("#form-field-nome"+idCampo).value = "...";
+                document.querySelector("#form-field-data_nasc"+idCampo).value = "...";
+                var options = {
+                    method: 'GET',
+                    mode: 'cors',
+                    cache: 'default'
+                }
+                await fetch(urlBase + token +"/7/" + cpf , options)
+                .then( function(response){
+                    response.json()
+                    .then(
+                        function(data){ 
+                            console.log(data)
+                            document.querySelector("#form-field-nome"+idCampo).value = data.nome;
+                            var nomeAPI = data.nome;
+                            console.log("NOME API: " + nomeAPI)
+                            var nomeCompleto = nomeAPI.split(" ");
+                            console.log("NOME COMPLETO: " + nomeCompleto)
+                            var primeiroNome = nomeCompleto[0];
+                            console.log("PRIMEIRO NOME: " + primeiroNome)
+                            var sobrenomeArray = nomeCompleto.slice(1);
+                            var sobrenome = sobrenomeArray.join(" ");
+                            console.log("SOBRENOME: " + sobrenome)
+                            document.querySelector("#form-field-nome"+idCampo).value = data.nome;
+                            //document.querySelector("#billing_nome"+idCampo).value = data.nome;
+                            document.querySelector("#form-field-data_nasc"+idCampo).value = data.nascimento;
+                            calculaIdadePorNascimento(idCampo, data.nascimento)
+                            //document.querySelector("#billing_nasc"+idCampo).value = data.nascimento;
+                            //document.querySelector("#billing_first_name"+idCampo).value = primeiroNome;
+                            //document.querySelector("#billing_last_name"+idCampo).value = sobrenome;
+                            //document.querySelector("#billing_cpf"+idCampo).value = cpf;
+                        },
+                    )
+                });
+            };
+        }
+    }
 },2000)
-
-jQuery(document).ready(function($) {
-    var token = "589b919a78706e51e72c5f5e60c01046"
-    var urlBase = "https://api.cpfcnpj.com.br/";
-$("#form-field-cpf_inquilino").blur(function() {
-    var cpf = $("#form-field-cpf_inquilino").val().replace(/\D/g, '');
-    if (cpf != "") {
-        var validacpf = /^[0-9]{11}$/;      
-        if(validacpf.test(cpf)) {
-            $("#form-field-nome_inquilino").val("...");
-            $("#form-field-data_nasc").val("...");
-            $.getJSON(urlBase + token +"/7/" + cpf , function(data) { 
-                $( '#billing_persontype option[value=1]' ).attr( 'selected', 'selected' ).change();
-                $("#form-field-nome_inquilino").val(data.nome);
-                var nomeAPI = data.nome;
-                var nomeCompleto = nomeAPI.split(" ");
-                var primeiroNome = nomeCompleto[0];
-                var sobrenomeArray = nomeCompleto.slice(1);
-                var sobrenome = sobrenomeArray.join(" ");
-                $("#form-field-nome_inquilino").val(data.nome);
-                $("#billing_nome_inquilino").val(data.nome);
-                $("#form-field-data_nasc").val(data.nascimento);
-                $("#billing_nasc_inquilino").val(data.nascimento);
-                $("#billing_first_name").val(primeiroNome);
-                $("#billing_last_name").val(sobrenome);
-                $("#billing_cpf").val(cpf);
-                
-                $("#billing_cpf_inquilino").val(cpf);
-            });
-        };
-    }
-});
 });
 
 </script>
