@@ -213,11 +213,52 @@ window.setTimeout(function(){
 
 // Mostrar seções conforme quantidade de viajantes
 
-function mostrarSessoesViajantes() {
+window.onload = function mostrarSessoesViajantes() {
     var campoIdade2 = document.getElementById('form-field-recebe-idade2').value
     var campoIdade3 = document.getElementById('form-field-recebe-idade3').value
+    var campoIdade4 = document.getElementById('form-field-recebe-idade4').value
+    var campoIdade5 = document.getElementById('form-field-recebe-idade5').value
+    var campoIdade6 = document.getElementById('form-field-recebe-idade6').value
+
     if (campoIdade2 > 0) {
         document.querySelector('#viajante2').style.display = "block"
+        document.getElementById('form-field-cpf2').setAttribute('required', 'required')
+        document.getElementById('form-field-nome2').setAttribute('required', 'required')
+        document.getElementById('form-field-data_nasc2').setAttribute('required', 'required')
+        document.getElementById('form-field-idade2').setAttribute('required', 'required')
+    }
+
+    if (campoIdade3 > 0) {
+        document.querySelector('#viajante3').style.display = "block"
+        document.getElementById('form-field-cpf3').setAttribute('required', 'required')
+        document.getElementById('form-field-nome3').setAttribute('required', 'required')
+        document.getElementById('form-field-data_nasc3').setAttribute('required', 'required')
+        document.getElementById('form-field-idade3').setAttribute('required', 'required')
+    }
+
+    if (campoIdade4 > 0) {
+        document.querySelector('#viajante4').style.display = "block"
+        document.getElementById('form-field-cpf4').setAttribute('required', 'required')
+        document.getElementById('form-field-nome4').setAttribute('required', 'required')
+        document.getElementById('form-field-data_nasc4').setAttribute('required', 'required')
+        document.getElementById('form-field-idade4').setAttribute('required', 'required')
+    }
+
+    if (campoIdade5 > 0) {
+        document.querySelector('#viajante5').style.display = "block"
+        document.getElementById('form-field-cpf5').setAttribute('required', 'required')
+        document.getElementById('form-field-nome5').setAttribute('required', 'required')
+        document.getElementById('form-field-data_nasc5').setAttribute('required', 'required')
+        document.getElementById('form-field-idade5').setAttribute('required', 'required')
+        
+    }
+
+    if (campoIdade6 > 0) {
+        document.querySelector('#viajante6').style.display = "block"
+        document.getElementById('form-field-cpf6').setAttribute('required', 'required')
+        document.getElementById('form-field-nome6').setAttribute('required', 'required')
+        document.getElementById('form-field-data_nasc6').setAttribute('required', 'required')
+        document.getElementById('form-field-idade6').setAttribute('required', 'required')
     }
         
 }
