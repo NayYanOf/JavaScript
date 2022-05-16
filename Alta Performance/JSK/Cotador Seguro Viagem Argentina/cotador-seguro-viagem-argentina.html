@@ -49,16 +49,10 @@
     valorFinal = diasViagem*(cotacaoDolar*planoComPonto)*(viajantesMenor65 + viajantesMaior65*2)
     valorFinalReal = valorFinal.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})
     document.getElementById("valorfinal").innerHTML = valorFinalReal
-    }
 
-    function mostrarBotaoAssinar () {
-        document.getElementById("btn-assinar").style.display = "block"
-    }
+    // Adicionar link no botão Assina
 
-    function linkEnvio (){
     var btnAssinar = document.querySelector("#btn-assinar a")  
-    var valorPlanoDia0 = document.getElementById("form-field-plano-0").checked
-    var valorPlanoDia1 = document.getElementById("form-field-plano-1").checked
     var planoEscolhidoLabel
     if (valorPlanoDia0 == true) {
         planoEscolhidoLabel = document.querySelector("label[for=form-field-plano-0]")
@@ -66,24 +60,21 @@
         planoEscolhidoLabel = document.querySelector("label[for=form-field-plano-1]")
     } else {}
 
-    var destino = document.getElementById("form-field-destino").value
-    var dataIda = document.getElementById("form-field-dataIda").value
-    var dataVolta = document.getElementById("form-field-dataVolta").value
-    var diasViagem = document.getElementById("form-field-diasVigem").value
-
     var idade2 = document.getElementById("form-field-idadeViaj2").value
     var idade3 = document.getElementById("form-field-idadeViaj3").value
     var idade4 = document.getElementById("form-field-idadeViaj4").value
     var idade5 = document.getElementById("form-field-idadeViaj5").value
     var idade6 = document.getElementById("form-field-idadeViaj6").value
-    var preco = document.getElementById("valorfinal").innerHTML
-    new Intl.NumberFormat
-    var precoNum = preco.NumberFormat
+    var precoNum = valorFinal.toFixed(2)
     var nomePLano = planoEscolhidoLabel.innerHTML
 
     var urlEnvio = 'https://starcorretoradeseguros.com.br/dev-cotador-seguro-viagem-argentina-formulario/?dstn='+destino+'&ida='+dataIda+'&vlt='+dataVolta+'&pln='+nomePLano+'&diasvj='+diasViagem+'&idad2='+idade2+'&idad3='+idade3+'&idad4='+idade4+'&idad5='+idade5+'idad6='+idade6+'&prec='+precoNum
 
     btnAssinar.href = urlEnvio
+    }
+
+    function mostrarBotaoAssinar () {
+        document.getElementById("btn-assinar").style.display = "block"
     }
 },2000)
 
