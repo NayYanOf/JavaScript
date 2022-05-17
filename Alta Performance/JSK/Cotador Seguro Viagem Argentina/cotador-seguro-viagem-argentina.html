@@ -1,15 +1,14 @@
 <script>
      // PÁGINA DO COTADOR
-     // Função para calculo da tarifa final
+    // Função para calculo da tarifa final
     var btnCotar
     window.setTimeout(function(){
-    document.getElementById("btn-assinar").style.display = "none"
+    document.getElementById('etapa3').style.display = "none"
     btnCotar = document.querySelector("#btn-cotar")
     btnCotar.addEventListener("click", function(e){
         e.preventDefault
         calculaValorFinal()
-        mostrarBotaoAssinar()
-        linkEnvio()
+        mostrarSessaoCotar()
     })
 
     function calculaValorFinal(){
@@ -49,14 +48,9 @@
     valorFinal = diasViagem*(cotacaoDolar*planoComPonto)*(viajantesMenor65 + viajantesMaior65*2)
     valorFinalReal = valorFinal.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})
     document.getElementById("valorfinal").innerHTML = valorFinalReal
-    }
-
-    function mostrarBotaoAssinar () {
-        document.getElementById("btn-assinar").style.display = "block"
-    }
-
-    function linkEnvio (){
-    var btnAssinar = document.querySelector("#btn-assinar a")  
+    
+    
+        var btnAssinar = document.querySelector("#btn-assinar")  
     var valorPlanoDia0 = document.getElementById("form-field-plano-0").checked
     var valorPlanoDia1 = document.getElementById("form-field-plano-1").checked
     var planoEscolhidoLabel
@@ -81,8 +75,13 @@
     var nomePLano = planoEscolhidoLabel.innerHTML
 
     var urlEnvio = 'https://starcorretoradeseguros.com.br/dev-cotador-seguro-viagem-argentina-formulario/?dstn='+destino+'&ida='+dataIda+'&vlt='+dataVolta+'&pln='+nomePLano+'&diasvj='+diasViagem+'&idad2='+idade2+'&idad3='+idade3+'&idad4='+idade4+'&idad5='+idade5+'&idad6='+idade6+'&prec='+precoNum
-
+    
     btnAssinar.href = urlEnvio
+    }
+
+    function mostrarSessaoCotar () {
+        document.getElementById('etapa2').style.display = "none"
+        document.getElementById('etapa3').style.display = "block"
     }
 },2000)
 
@@ -222,43 +221,43 @@ window.onload = function mostrarSessoesViajantes() {
 
     if (campoIdade2 > 0) {
         document.querySelector('#viajante2').style.display = "block"
-        document.getElementById('form-field-cpf2').setAttribute('required', 'required')
-        document.getElementById('form-field-nome2').setAttribute('required', 'required')
-        document.getElementById('form-field-data_nasc2').setAttribute('required', 'required')
-        document.getElementById('form-field-idade2').setAttribute('required', 'required')
+        document.getElementById('form-field-cpf2').setAttribute('required', 'true')
+        document.getElementById('form-field-nome2').setAttribute('required', 'true')
+        document.getElementById('form-field-data_nasc2').setAttribute('required', 'true')
+        document.getElementById('form-field-idade2').setAttribute('required', 'true')
     }
 
     if (campoIdade3 > 0) {
         document.querySelector('#viajante3').style.display = "block"
-        document.getElementById('form-field-cpf3').setAttribute('required', 'required')
-        document.getElementById('form-field-nome3').setAttribute('required', 'required')
-        document.getElementById('form-field-data_nasc3').setAttribute('required', 'required')
-        document.getElementById('form-field-idade3').setAttribute('required', 'required')
+        document.getElementById('form-field-cpf3').setAttribute('required', 'true')
+        document.getElementById('form-field-nome3').setAttribute('required', 'true')
+        document.getElementById('form-field-data_nasc3').setAttribute('required', 'true')
+        document.getElementById('form-field-idade3').setAttribute('required', 'true')
     }
 
     if (campoIdade4 > 0) {
         document.querySelector('#viajante4').style.display = "block"
-        document.getElementById('form-field-cpf4').setAttribute('required', 'required')
-        document.getElementById('form-field-nome4').setAttribute('required', 'required')
-        document.getElementById('form-field-data_nasc4').setAttribute('required', 'required')
-        document.getElementById('form-field-idade4').setAttribute('required', 'required')
+        document.getElementById('form-field-cpf4').setAttribute('required', 'true')
+        document.getElementById('form-field-nome4').setAttribute('required', 'true')
+        document.getElementById('form-field-data_nasc4').setAttribute('required', 'true')
+        document.getElementById('form-field-idade4').setAttribute('required', 'true')
     }
 
     if (campoIdade5 > 0) {
         document.querySelector('#viajante5').style.display = "block"
-        document.getElementById('form-field-cpf5').setAttribute('required', 'required')
-        document.getElementById('form-field-nome5').setAttribute('required', 'required')
-        document.getElementById('form-field-data_nasc5').setAttribute('required', 'required')
-        document.getElementById('form-field-idade5').setAttribute('required', 'required')
+        document.getElementById('form-field-cpf5').setAttribute('required', 'true')
+        document.getElementById('form-field-nome5').setAttribute('required', 'true')
+        document.getElementById('form-field-data_nasc5').setAttribute('required', 'true')
+        document.getElementById('form-field-idade5').setAttribute('required', 'true')
         
     }
 
     if (campoIdade6 > 0) {
         document.querySelector('#viajante6').style.display = "block"
-        document.getElementById('form-field-cpf6').setAttribute('required', 'required')
-        document.getElementById('form-field-nome6').setAttribute('required', 'required')
-        document.getElementById('form-field-data_nasc6').setAttribute('required', 'required')
-        document.getElementById('form-field-idade6').setAttribute('required', 'required')
+        document.getElementById('form-field-cpf6').setAttribute('required', 'true')
+        document.getElementById('form-field-nome6').setAttribute('required', 'true')
+        document.getElementById('form-field-data_nasc6').setAttribute('required', 'true')
+        document.getElementById('form-field-idade6').setAttribute('required', 'true')
     }
         
 }
