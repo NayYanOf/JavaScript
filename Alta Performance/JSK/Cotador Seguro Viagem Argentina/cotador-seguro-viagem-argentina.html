@@ -9,6 +9,7 @@
         e.preventDefault
         calculaValorFinal()
         mostrarSessaoCotar()
+        mostrarBotaoAssinar()
     })
 
     function calculaValorFinal(){
@@ -82,6 +83,22 @@
     function mostrarSessaoCotar () {
         document.getElementById('etapa2').style.display = "none"
         document.getElementById('etapa3').style.display = "block"
+    }
+
+    function mostrarBotaoAssinar() {
+        var valorFinal = document.getElementById('valorfinal').innerHTML
+        var valorFinalNum = valorFinal.substr(8)
+        var valorFinalInt = parseInt(valorFinalNum)
+        var btnAssinar = document.getElementById('btn-assinar')
+        var msgErro = document.getElementById('msg-erro')
+        btnAssinar.style.display = "none"
+
+        if (valorFinalInt > 0) {
+            btnAssinar.style.display = "inline-block"
+            msgErro.style.display = "none"
+        } else {
+            msgErro.style.display = "block"
+        }
     }
 },2000)
 
@@ -261,3 +278,10 @@ window.onload = function mostrarSessoesViajantes() {
     }
         
 }
+
+// Tornar preço em formatação de real no Total da página
+
+var campoPreco = document.getElementById('form-field-campoPreco').value
+var precoNum = parseFloat(campoPreco)
+var precoFinal = precoNum.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})
+document.getElementById('precoTexto').innerHTML = precoFinal
