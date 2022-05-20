@@ -285,3 +285,92 @@ var campoPreco = document.getElementById('form-field-campoPreco').value
 var precoNum = parseFloat(campoPreco)
 var precoFinal = precoNum.toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})
 document.getElementById('precoTexto').innerHTML = precoFinal
+
+// Inserir valores nos campos do checkout
+var btnSolicitar
+    window.setTimeout(function(){
+function insereValoresCheckout() {
+        var campoCPF1 = document.getElementById('billing_CPF1')
+        var campoCPF2 = document.getElementById('billing_CPF2')
+        var campoCPF3 = document.getElementById('billing_CPF3')
+        var campoCPF4 = document.getElementById('billing_CPF4')
+        var campoCPF5 = document.getElementById('billing_CPF5')
+        var campoCPF6 = document.getElementById('billing_CPF6')
+        var cpf1 = document.getElementById('form-field-cpf1')
+        var cpf2 = document.getElementById('form-field-cpf2')
+        var cpf3 = document.getElementById('form-field-cpf3')
+        var cpf4 = document.getElementById('form-field-cpf4')
+        var cpf5 = document.getElementById('form-field-cpf5')
+        var cpf6 = document.getElementById('form-field-cpf6')
+
+        campoCPF1.value = cpf1.value
+        campoCPF2.value = cpf2.value
+        campoCPF3.value = cpf3.value
+        campoCPF4.value = cpf4.value
+        campoCPF5.value = cpf5.value
+        campoCPF6.value = cpf6.value
+
+        var campoNome1 = document.getElementById('billing_nome1')
+        var campoNome2 = document.getElementById('billing_nome2')
+        var campoNome3 = document.getElementById('billing_nome3')
+        var campoNome4 = document.getElementById('billing_nome4')
+        var campoNome5 = document.getElementById('billing_nome5')
+        var campoNome6 = document.getElementById('billing_nome6')
+        var nome1 = document.getElementById('form-field-nome1')
+        var nome2 = document.getElementById('form-field-nome2')
+        var nome3 = document.getElementById('form-field-nome3')
+        var nome4 = document.getElementById('form-field-nome4')
+        var nome5 = document.getElementById('form-field-nome5')
+        var nome6 = document.getElementById('form-field-nome6')
+
+        campoNome1.value = nome1.value
+        campoNome2.value = nome2.value
+        campoNome3.value = nome3.value
+        campoNome4.value = nome4.value
+        campoNome5.value = nome5.value
+        campoNome6.value = nome6.value
+
+        var campoNasc1 = document.getElementById('billing_nasc1')
+        var campoNasc2 = document.getElementById('billing_nasc2')
+        var campoNasc3 = document.getElementById('billing_nasc3')
+        var campoNasc4 = document.getElementById('billing_nasc4')
+        var campoNasc5 = document.getElementById('billing_nasc5')
+        var campoNasc6 = document.getElementById('billing_nasc6')
+        var nasc1 = document.getElementById('form-field-data_nasc1')
+        var nasc2 = document.getElementById('form-field-data_nasc2')
+        var nasc3 = document.getElementById('form-field-data_nasc3')
+        var nasc4 = document.getElementById('form-field-data_nasc4')
+        var nasc5 = document.getElementById('form-field-data_nasc5')
+        var nasc6 = document.getElementById('form-field-data_nasc6')
+
+        campoNasc1.value = nasc1.value
+        campoNasc2.value = nasc2.value
+        campoNasc3.value = nasc3.value
+        campoNasc4.value = nasc4.value
+        campoNasc5.value = nasc5.value
+        campoNasc6.value = nasc6.value
+
+        var campoIdade1 = document.getElementById('billing_idade1')
+        var campoIdade2 = document.getElementById('billing_idade2')
+        var campoIdade3 = document.getElementById('billing_idade3')
+        var campoIdade4 = document.getElementById('billing_idade4')
+        var campoIdade5 = document.getElementById('billing_idade5')
+        var campoIdade6 = document.getElementById('billing_idade6')
+        var idade1 = document.getElementById('form-field-idade1')
+        var idade2 = document.getElementById('form-field-idade2')
+        var idade3 = document.getElementById('form-field-idade3')
+        var idade4 = document.getElementById('form-field-idade4')
+        var idade5 = document.getElementById('form-field-idade5')
+        var idade6 = document.getElementById('form-field-idade6')
+
+        campoIdade1.value = idade1.value
+        campoIdade2.value = idade2.value
+        campoIdade3.value = idade3.value
+        campoIdade4.value = idade4.value
+        campoIdade5.value = idade5.value
+        campoIdade6.value = idade6.value
+    }
+
+    btnSolicitar = document.querySelector("#place_order")
+    btnSolicitar = btnSolicitar.addEventListener("click", insereValoresCheckout)
+}, 2000)
