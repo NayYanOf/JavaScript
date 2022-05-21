@@ -374,3 +374,14 @@ function insereValoresCheckout() {
     btnSolicitar = document.querySelector("#place_order")
     btnSolicitar = btnSolicitar.addEventListener("click", insereValoresCheckout)
 }, 2000)
+
+function insereValoresCheckout2() {
+    var camposCPF = document.querySelectorAll('[id^="form-field-cpf"]')
+    var CamposCPFChkt = document.querySelectorAll('[id^="form-field-nome"]')
+    for (var i = 0; i < camposCPF.length; i++) {
+        let x = i+1
+        if (camposCPF[i].getAttribute('id').substr(-1) == CamposCPFChkt[i].getAttribute('id').substr(-1)) {
+            document.getElementById('form-field-nome'+x).value = document.getElementById('form-field-cpf'+x).value
+        }
+    }
+}
