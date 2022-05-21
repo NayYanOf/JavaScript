@@ -377,11 +377,13 @@ function insereValoresCheckout() {
 
 function insereValoresCheckout2() {
     var camposCPF = document.querySelectorAll('[id^="form-field-cpf"]')
-    var CamposCPFChkt = document.querySelectorAll('[id^="form-field-nome"]')
+    var CamposCPFChkt = document.querySelectorAll('[id^="form-field-nome"]') //TROCAR PARA PREFIXO DO ID DO CAMPO CPF DO CHECKOUT
     for (var i = 0; i < camposCPF.length; i++) {
         let x = i+1
         if (camposCPF[i].getAttribute('id').substr(-1) == CamposCPFChkt[i].getAttribute('id').substr(-1)) {
-            document.getElementById('form-field-nome'+x).value = document.getElementById('form-field-cpf'+x).value
+            document.getElementById('form-field-nome'+x).value = document.getElementById('form-field-cpf'+x).value //TROCAR PARA PREFIXO DO ID DO CAMPO CPF DO CHECKOUT
+
+    // Fazer um for para cada tipo de campo: Nome Completo, Data de Nasc e Idade
         }
     }
 }
