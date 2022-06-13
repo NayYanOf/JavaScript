@@ -371,19 +371,38 @@ function insereValoresCheckout() {
         campoIdade6.value = idade6.value
     }
 
+    function insereValoresCheckout2() {
+    var camposCPF = document.querySelectorAll('[id^="form-field-cpf"]')
+    var CamposCPFChkt = document.querySelectorAll('[id^="billing_CPF"]')
+    for (var i = 0; i < camposCPF.length; i++) {
+        let x = i+1
+        if (camposCPF[i].getAttribute('id').substr(-1) == CamposCPFChkt[i].getAttribute('id').substr(-1)) {
+            document.getElementById('billing_CPF'+x).value = document.getElementById('form-field-cpf'+x).value
+
+    // Fazer um for para cada tipo de campo: Nome Completo, Data de Nasc e Idade
+            }
+        }
+    }
+
     btnSolicitar = document.querySelector("#place_order")
     btnSolicitar = btnSolicitar.addEventListener("click", insereValoresCheckout)
 }, 2000)
 
+var btnSolicitar
+    window.setTimeout(function(){
 function insereValoresCheckout2() {
     var camposCPF = document.querySelectorAll('[id^="form-field-cpf"]')
-    var CamposCPFChkt = document.querySelectorAll('[id^="form-field-nome"]') //TROCAR PARA PREFIXO DO ID DO CAMPO CPF DO CHECKOUT
+    var CamposCPFChkt = document.querySelectorAll('[id^="billing_CPF"]')
     for (var i = 0; i < camposCPF.length; i++) {
         let x = i+1
         if (camposCPF[i].getAttribute('id').substr(-1) == CamposCPFChkt[i].getAttribute('id').substr(-1)) {
-            document.getElementById('form-field-nome'+x).value = document.getElementById('form-field-cpf'+x).value //TROCAR PARA PREFIXO DO ID DO CAMPO CPF DO CHECKOUT
+            document.getElementById('billing_CPF'+x).value = document.getElementById('form-field-cpf'+x).value
 
     // Fazer um for para cada tipo de campo: Nome Completo, Data de Nasc e Idade
         }
     }
 }
+
+btnSolicitar = document.querySelector(".pafe-form-builder-button")
+btnSolicitar = btnSolicitar.addEventListener("click", insereValoresCheckout2)
+}, 2000)
